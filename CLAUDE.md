@@ -107,3 +107,7 @@ Required in `.env`:
 ## Database Schema Management
 
 - DBスキーマは @prisma/schema.prisma に定義しています。DB に保存しているデータ構造の情報が必要な場合は常に参照するようにしてください
+
+## Testing Configuration
+
+- vitest の設定は @vitest.config.mts に記載している
