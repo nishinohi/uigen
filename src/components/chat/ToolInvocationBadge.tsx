@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 interface ToolInvocationBadgeProps {
   toolName: string;
   args: any;
-  state: "result" | "call";
+  state: "result" | "call" | "partial-call";
   result?: any;
 }
 
@@ -59,6 +59,7 @@ export function ToolInvocationBadge({
   };
 
   const isCompleted = state === "result" && result;
+  const isInProgress = state === "call" || state === "partial-call";
   const displayText = getDisplayText();
 
   return (
@@ -72,8 +73,10 @@ export function ToolInvocationBadge({
     >
       {isCompleted ? (
         <div className="w-2 h-2 rounded-full bg-emerald-500" />
-      ) : (
+      ) : isInProgress ? (
         <Loader2 className="w-3 h-3 animate-spin text-blue-600" />
+      ) : (
+        <div className="w-2 h-2 rounded-full bg-neutral-300" />
       )}
       <span className="font-medium">{displayText}</span>
     </div>
